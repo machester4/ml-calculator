@@ -20,3 +20,6 @@ spec:
           image: gcr.io/PROJECT_ID/IMAGE:TAG
           ports:
             - containerPort: 8080
+          env:
+            - name: PUBSUB_PROJECT_ID
+              value: "PUBSUB_PROJECT_ID"

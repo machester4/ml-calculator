@@ -28,17 +28,18 @@
 
 Before running the project please ensure that all the dependencies are installed in your system. Then follow the next:
 
-1. Configure pubsub environment variables.
 
-    ```
-    $(gcloud beta emulators pubsub env-init)
-    ```
-2. Run pubsub emulator.
+1. Run pubsub emulator.
 
     ```  
     gcloud beta emulators pubsub start --project=PUBSUB_PROJECT_ID
     ```
+2. Configure pubsub environment variables.
 
+    ```
+    export PUBSUB_EMULATOR_HOST=localhost:port-running-pubsub-emulator
+    export PUBSUB_PROJECT_ID=my-project-id
+    ```
 2. Run the project itself.
 
     ```
