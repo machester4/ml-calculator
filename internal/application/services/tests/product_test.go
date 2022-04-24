@@ -27,3 +27,19 @@ func TestProductService_GetProducts_ErrorInProductRepository_ShouldReturnError(t
 		t.Error("Expected error, got nil")
 	}
 }
+
+// Should return products.
+func TestProductService_GetProducts_ShouldReturnProducts(t *testing.T) {
+	// Arrange
+	productRepository := &mocks.ProductRepository{}
+	productService := services.NewProductService(productRepository)
+
+	// Act
+	productRepository.On("GetProducts", context.Background(), []string{}).Return([]dto.Product{}, nil)
+	_, err := productService.GetProductsPrices(context.Background(), []string{})
+
+	// Assert
+	if err != nil {
+		t.Errorf("Expected nil, got %v", err)
+	}
+}

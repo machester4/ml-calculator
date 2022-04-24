@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: calculator
-          image: gcr.io/ml-vouchers/calculator:latest
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
           ports:
             - containerPort: 8080

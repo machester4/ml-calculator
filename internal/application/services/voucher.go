@@ -6,6 +6,7 @@ import (
 	"calculator.com/internal/application/dto"
 	"calculator.com/internal/application/repositories"
 	"calculator.com/internal/domain"
+	mathutil "calculator.com/internal/pkg/math"
 )
 
 type voucherService struct {
@@ -20,7 +21,10 @@ func (v voucherService) GetVoucherMaximumSubset(ctx context.Context, data dto.Vo
 		return dto.VoucherMaximumSubsetOutput{}, err
 	}
 
-	return v.repo.GetVoucherMaximumSubset(ctx, data), nil
+	output := v.repo.GetVoucherMaximumSubset(ctx, data)
+	output.VoucherSpent = mathutil.RoundFloatToTwoDecimalPlaces(output.VoucherSpent)
+
+	return output, nil
 }
 
 func NewVoucherService(repo repositories.VoucherRepository) *voucherService {
