@@ -1,11 +1,12 @@
-package server
+package ginserver
 
 import (
 	"calculator.com/configs"
 	"calculator.com/infra/transports"
-	"calculator.com/infra/transports/server/handlers"
 	"calculator.com/internal/engine"
 	"github.com/gin-gonic/gin"
+
+	ginhandlers "calculator.com/infra/transports/http/gin/handlers"
 )
 
 type ginServer struct {
@@ -16,11 +17,11 @@ type ginServer struct {
 var _ transports.Transport = (*ginServer)(nil)
 
 func (s ginServer) InitializeDefaultHandlers(e engine.ServiceEngine) {
-	s.router.GET("/", s.wrap(handlers.HandleHealthCheck, e))
+	s.router.GET("/", s.wrap(ginhandlers.HandleHealthCheck, e))
 }
 
 func (s ginServer) InitializeVoucherHandlers(e engine.ServiceEngine) {
-	s.router.POST("/", s.wrap(handlers.HandleVoucherMaxSubset, e))
+	s.router.POST("/", s.wrap(ginhandlers.HandleVoucherMaxSubset, e))
 }
 
 type handler func(c *gin.Context, e engine.ServiceEngine)
@@ -35,7 +36,7 @@ func (s ginServer) Start() error {
 	return s.router.Run(s.config.Port)
 }
 
-func NewHttpServer(c configs.ServerConfig) *ginServer {
+func New(c configs.ServerConfig) *ginServer {
 	return &ginServer{
 		router: gin.Default(),
 		config: c,

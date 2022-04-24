@@ -18,9 +18,9 @@
 
 ## Dependencies
 
-* Go (1.11.1) or later.
-* Google Pubsub.
-* Mercado Libre API.
+* [Go (1.17) or later](https://go.dev/)
+* [Google pubsub-emulator](https://cloud.google.com/pubsub/docs/emulator)
+* [Mercado Libre API](https://developers.mercadolibre.com.ar/es_ar/items-y-busquedas)
 
 ## How To Use
 
@@ -28,13 +28,18 @@
 
 Before running the project please ensure that all the dependencies are installed in your system. Then follow the next:
 
-1. First step, start pubsub
+1. Configure pubsub environment variables.
 
     ```
-    ...
+    $(gcloud beta emulators pubsub env-init)
+    ```
+2. Run pubsub emulator.
+
+    ```  
+    gcloud beta emulators pubsub start --project=PUBSUB_PROJECT_ID
     ```
 
-2. Run the project itself
+2. Run the project itself.
 
     ```
     make web

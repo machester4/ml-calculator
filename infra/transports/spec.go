@@ -7,4 +7,5 @@ import (
 type Transport interface {
 	InitializeDefaultHandlers(engine.ServiceEngine)
 	InitializeVoucherHandlers(engine.ServiceEngine)
+	Start() error
 }

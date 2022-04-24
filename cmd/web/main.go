@@ -6,7 +6,8 @@ import (
 
 	"calculator.com/configs"
 	"calculator.com/infra/data"
-	"calculator.com/infra/transports/server"
+	fiberserver "calculator.com/infra/transports/http/fiber"
+
 	"calculator.com/internal/application/services"
 	"calculator.com/internal/engine"
 	"calculator.com/pkg/httputils"
@@ -41,7 +42,8 @@ func main() {
 	})
 
 	// Create server
-	server := server.NewHttpServer(config.Server)
+	// server := ginserver.New(config.Server)
+	server := fiberserver.New(config.Server)
 
 	// Initialize server handlers
 	server.InitializeDefaultHandlers(e)
