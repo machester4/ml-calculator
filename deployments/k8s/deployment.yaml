@@ -29,6 +29,6 @@ spec:
               mountPath: /var/secrets/google
           env:
             - name: PUBSUB_PROJECT_ID
-              value: "PUBSUB_PROJECT_ID"
+              value: ml-vouchers
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /var/secrets/google/key.json
