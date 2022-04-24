@@ -15,11 +15,20 @@ spec:
       labels:
         app: calculator
     spec:
+      volumes:
+        - name: google-cloud-key
+          secret:
+            secretName: pubsub-key
       containers:
         - name: calculator
           image: gcr.io/PROJECT_ID/IMAGE:TAG
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: google-cloud-key
+              mountPath: /var/secrets/google
           env:
             - name: PUBSUB_PROJECT_ID
               value: "PUBSUB_PROJECT_ID"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/key.json
