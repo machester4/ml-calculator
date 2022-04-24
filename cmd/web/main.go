@@ -46,6 +46,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer psc.Close()
 
 	// Create messaging
 	psi := pubsubmessaging.NewPubsubMessaging(psc)
