@@ -39,7 +39,7 @@ func (s fiberServer) Start() error {
 func New(c configs.ServerConfig) *fiberServer {
 	return &fiberServer{
 		app: fiber.New(fiber.Config{
-			Prefork: true,
+			Prefork: false,
 		}),
 		config: c,
 	}
