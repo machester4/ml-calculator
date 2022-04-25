@@ -31,7 +31,7 @@ func (s fiberServer) wrapHander(h handler, e engine.ServiceEngine) fiber.Handler
 type handler func(c *fiber.Ctx, e engine.ServiceEngine) error
 
 func (s fiberServer) InitializeVoucherHandlers(e engine.ServiceEngine, m messaging.Messaging) {
-	s.app.Post("/coupons",
+	s.app.Post("/calculator/coupon",
 		s.wrapMiddleware(fibermiddleware.MiddlewareVoucherMaxSubset, m),
 		s.wrapHander(fiberhanders.HandleVoucherMaxSubset, e),
 	)
