@@ -19,7 +19,7 @@ type fiberServer struct {
 var _ transports.Transport = (*fiberServer)(nil)
 
 func (s fiberServer) InitializeDefaultHandlers(e engine.ServiceEngine) {
-	s.app.Get("/calculator", s.wrapHander(fiberhanders.HandleHealthCheck, e))
+	s.app.Get("/", s.wrapHander(fiberhanders.HandleHealthCheck, e))
 }
 
 func (s fiberServer) wrapHander(h handler, e engine.ServiceEngine) fiber.Handler {
