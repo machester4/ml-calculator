@@ -29,18 +29,11 @@
 Before running the project please ensure that all the dependencies are installed in your system. Then follow the next:
 
 
-1. Run pubsub emulator.
-
-    ```  
-    gcloud beta emulators pubsub start --project=PUBSUB_PROJECT_ID
-    ```
-2. Configure pubsub environment variables.
-
-    ```
-    export PUBSUB_EMULATOR_HOST=localhost:port-running-pubsub-emulator
-    export PUBSUB_PROJECT=my-project-id
-    ```
-2. Run the project itself.
+1. Run pubsub emulator. [Click here](https://cloud.google.com/pubsub/docs/emulator)
+2. Create topic.
+    - Topic: `voucher-metric`
+    - Subscription: `voucher-metric-sub`
+3. Run the project itself.
 
     ```
     make web
@@ -53,6 +46,15 @@ In order to run the project tests you need to execute the following command:
 ```
 make test
 ```
+
+### TODO:
+- [ ] Refactor transport layer
+- [ ] Integration tests
+- [ ] Circuit breaker
+- [ ] Logging
+- [ ] Monitoring
+- [ ] Error handling
+- [ ] Documentation
 
 ## Documentation
 
