@@ -19,7 +19,7 @@ type fiberServer struct {
 var _ transports.Transport = (*fiberServer)(nil)
 
 func (s fiberServer) InitializeDefaultHandlers(e engine.ServiceEngine) {
-	s.app.Get("/", s.wrapHander(fiberhanders.HandleHealthCheck, e))
+	s.app.Get("/calculator", s.wrapHander(fiberhanders.HandleHealthCheck, e))
 }
 
 func (s fiberServer) wrapHander(h handler, e engine.ServiceEngine) fiber.Handler {
@@ -31,7 +31,7 @@ func (s fiberServer) wrapHander(h handler, e engine.ServiceEngine) fiber.Handler
 type handler func(c *fiber.Ctx, e engine.ServiceEngine) error
 
 func (s fiberServer) InitializeVoucherHandlers(e engine.ServiceEngine, m messaging.Messaging) {
-	s.app.Post("/",
+	s.app.Post("/calculator/coupon",
 		s.wrapMiddleware(fibermiddleware.MiddlewareVoucherMaxSubset, m),
 		s.wrapHander(fiberhanders.HandleVoucherMaxSubset, e),
 	)
