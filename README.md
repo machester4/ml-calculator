@@ -38,7 +38,7 @@ Before running the project please ensure that all the dependencies are installed
 
     ```
     export PUBSUB_EMULATOR_HOST=localhost:port-running-pubsub-emulator
-    export PUBSUB_PROJECT_ID=my-project-id
+    export PUBSUB_PROJECT=my-project-id
     ```
 2. Run the project itself.
 

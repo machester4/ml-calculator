@@ -7,9 +7,9 @@ type PubSubConfig struct {
 }
 
 func NewPubSubConfigFromEnv() PubSubConfig {
-	projectID := os.Getenv("PUBSUB_PROJECT_ID")
+	projectID := os.Getenv("PUBSUB_PROJECT")
 	if projectID == "" {
-		panic("PUBSUB_PROJECT_ID is not set")
+		panic("PUBSUB_PROJECT is not set")
 	}
 
 	return PubSubConfig{
