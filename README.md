@@ -1,5 +1,5 @@
 <h1 align="center">
-  ML Voucher Calculator
+  Voucher Calculator
   <br>
 </h1>
 <h4 align="center">Maximize total spent of a voucher according to a list of items.</h4>
@@ -38,6 +38,11 @@ Before running the project please ensure that all the dependencies are installed
     ```
     make web
     ```
+4. Test it.
+
+    ```
+    curl -X POST -H "Content-Type: application/json" -d '{"item_ids": ["MLU605321798", "MLU473655928", "MLU468171212", "MLU473464533", "MLU608054906"], "amount": 500}' http://localhost:8080/calculator/coupon
+    ```
 
 ### Running the tests
 
@@ -54,11 +59,22 @@ make test
 - [ ] Logging
 - [ ] Monitoring
 - [ ] Error handling
-- [ ] Documentation
+- [x] Documentation
 
 ## Documentation
+- ### Architecture
+  ![](/docs/architecture.jpg)
+  - ### Highlights
+    * **Decentralized** microservice architecture
+    * Project architecture based in **onion** architecture
+    * **CI / CD** pipelines with GitHub Actions
+    * K8s deployment
 
+- ### Related projects
+  - [Products Leaderboard](https://github.com/machester4/products-leaderboard)
+  - [Greedy algorithm](https://github.com/machester4/greedy-approximation-algorithm)
 
+<hr>
 
 * If you want to add new features to this project please [see the contribution guide](.github/CONTRIBUTING.md)
 * Questions?, <a href="mailto:machester4@gmail.com?Subject=Question about Project" target="_blank">write here</a>
